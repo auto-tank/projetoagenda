@@ -1,7 +1,9 @@
 const Contato = require('../models/ContatoModel');
 
 exports.index = (req, res) => {
-    res.render('contato');
+    res.render('contato', {
+        contato: {}
+    });
 };
 
 exports.register = async (req, res) => {
@@ -28,7 +30,8 @@ exports.register = async (req, res) => {
 exports.editIndex = async (req, res) => {
     if (!req.params.id) return res.render('404');
 
-    const user = await Contato.buscaPorID(req.params.id);
+    const contato = await Contato.buscaPorID(req.params.id);
+    if (!contato) return res.render('404');
 
-    res.render('contato');
+    res.render('contato', { contato });
 };
