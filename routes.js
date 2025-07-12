@@ -20,5 +20,9 @@ routes.get('/login/logout', loginController.logout);
 routes.get('/contato/index', loginRequired, contatoController.index);
 routes.post('/contato/register', loginRequired, contatoController.register);
 routes.get('/contato/index/:id', loginRequired, contatoController.editIndex);
+routes.post('/contato/edit/:id', loginRequired, contatoController.edit);
+
+// Rotas 404
+routes.get('/404', homeController.pageNotFound);
 
 module.exports = routes;

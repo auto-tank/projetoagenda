@@ -28,7 +28,7 @@ class Login {
 
         if (!bcryptjs.compareSync(this.body.password, this.user.password)){
             this.errors.push('Senha inválida.');
-            this.user = null;
+            this.user = null; // Garante que o usuário não exista mesmo por conta do erro
             return;
         }
 
